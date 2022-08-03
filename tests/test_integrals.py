@@ -250,3 +250,15 @@ def test_MonteCarlo_double_circle_r():
     import sympy
     r = sympy.symbols('r')
     I_exact = sympy.integrate(2*sympy.pi*r*r, (r, 0, 2))
+    print('\nExact integral: ', I_exact.evalf())
+    x0 = -2
+    x1 = 2
+    y0 = -2
+    y1 = 2
+    n = 1000
+    np.random.seed(6)
+    I_expected = 16.7970837117376384  # Computed with this seed
+    I_computed = MonteCarlo_double(lambda x, y: np.sqrt(x ** 2 + y ** 2),
+                                                g, x0, x1, y0, y1, n)
+    print('MC approximation %d samples: %.16f' % (n ** 2, I_computed))
+    assert(abs(I_expected - I_computed) < 1E-15)
