@@ -58,6 +58,4 @@ def midpoint(f, a, b, n):
     return result
 
 
-
-
 # TODO: Simpson's rule, Gauss quadrature
