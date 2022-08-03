@@ -1,4 +1,5 @@
 from src.integral.integral import *
+from src.integral.integral_vec import *
 
 
 def test_trapezoidal_one_exact_result():
@@ -123,6 +124,7 @@ def convergence_rates_midpoint(f, F, a, b, num_experiments=14):
             r[i - 1] = float('%.2f' % r_im1)  # Truncate to two decimals
     return r
 
+
 def test_midpoint_conv_rate():
     """Check empirical convergence rates against the expected -2."""
     from math import exp
@@ -136,3 +138,39 @@ def test_midpoint_conv_rate():
     tol = 0.01
     msg = str(r[-4:])  # show last 4 estimated rates
     assert (abs(r[-1]) - 2) < tol, msg
+
+
+def test_trapezoidal_vec_linear():
+    """Check that linear functions are integrated exactly"""
+
+    f = lambda x: 6 * x - 4
+    F = lambda x: 3 * x ** 2 - 4 * x
+    a = 1.2
+    b = 4.4
+
+    expected = F(b) - F(a)
+    tol = 1E-14
+    for n in 2, 20, 21:
+        computed = trapezoidal_vec(f, a, b, n)
+        error = abs(expected - computed)
+        success = error < tol
+        msg = 'error=%g > tol0%g' % (error, tol)
+        assert (success, msg)
+
+
+def test_midpoint_vec_linear():
+    """Check that linear functions are integrated exactly"""
+
+    f = lambda x: 6 * x - 4
+    F = lambda x: 3 * x ** 2 - 4 * x
+    a = 1.2
+    b = 4.4
+
+    expected = F(b) - F(a)
+    tol = 1E-14
+    for n in 2, 20, 21:
+        computed = midpoint_vec(f, a, b, n)
+        error = abs(expected - computed)
+        success = error < tol
+        msg = 'error=%g > tol0%g' % (error, tol)
+        assert (success, msg)
