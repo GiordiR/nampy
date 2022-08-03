@@ -1,7 +1,7 @@
 from numpy import linspace, sum
 
 
-def trapezoidal(f, a, b, n):
+def trapezoidal_vec(f, a, b, n):
     r"""
     Composite trapezoidal method for integral numerical calculation.
 
@@ -27,7 +27,7 @@ def trapezoidal(f, a, b, n):
     return h*s
 
 
-def midpoint(f, a, b, n):
+def midpoint_vec(f, a, b, n):
     r"""
     Composite trapezoidal method for integral numerical calculation.
 
