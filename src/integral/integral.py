@@ -134,5 +134,49 @@ def midpoint_double2(f, a, b, c, d, nx, ny):
 
     return midpoint(g, a, b, nx)
 
+def midpoint_triple(g, a, b, c, d, e, f, nx, ny, nz):
+    r"""
+    Composite trapezoidal method for triple integral numerical calculation.
+    Reusing 1D formulation
+
+    :param g: function.
+    :type g: lambda function
+
+    :param a: Lower interval bound in x.
+    :type a: float
+
+    :param b: Upper interval bound in x.
+    :type b: float
+
+    :param c: Lower interval bound in y.
+    :type c: float
+
+    :param d: Upper interval bound in y.
+    :type d: float
+
+    :param e: Lower interval bound in z.
+    :type e: float
+
+    :param f: Upper interval bound in z.
+    :type f: float
+
+    :param nx: Number of subdivision in x.
+    :type nx: int
+
+    :param ny: Number of subdivision in y.
+    :type ny: int
+
+    :param nz: Number of subdivision in z.
+    :type nz: int
+    """
+
+    def p(x, y):
+        return midpoint(lambda z: g(x, y, z), e, f, nz)
+
+    def q(x):
+        return midpoint(lambda y: p(x, y), c, d, ny)
+
+    return midpoint(q, a, b, nx)
+
 
 # TODO: Simpson's rule, Gauss quadrature
