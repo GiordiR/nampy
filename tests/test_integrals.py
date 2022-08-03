@@ -180,9 +180,12 @@ def test_midpoint_double():
     """Test that a linear function is integrated exactly."""
 
     def f(x, y):
-        return 2*x + y
+        return 2 * x + y
 
-    a = 0; b = 2; c = 2; d = 3
+    a = 0;
+    b = 2;
+    c = 2;
+    d = 3
     import sympy
     x, y = sympy.symbols('x y')
     I_expected = sympy.integrate(f(x, y), (x, a, b), (y, c, d))
@@ -191,8 +194,9 @@ def test_midpoint_double():
         I_computed1 = midpoint_double(f, a, b, c, d, nx, ny)
         I_computed2 = midpoint_double2(f, a, b, c, d, nx, ny)
         tol = 1E-14
-        assert(abs(I_computed1 - I_expected) < tol)
-        assert(abs(I_computed2 - I_expected) < tol)
+        assert (abs(I_computed1 - I_expected) < tol)
+        assert (abs(I_computed2 - I_expected) < tol)
+
 
 def test_midpoint_triple():
     """Test that a linear function is integrated exactly."""
@@ -214,4 +218,35 @@ def test_midpoint_triple():
     for nx, ny, nz in (3, 5, 2), (4, 4, 4), (5, 3, 6):
         I_computed = midpoint_triple(g, a, b, c, d, e, f, nx, ny, nz)
         tol = 1E-14
-        assert(abs(I_computed - I_expected) < tol)
+        assert (abs(I_computed - I_expected) < tol)
+
+
+def test_MonteCarlo_double_rectangle_area():
+    """Check the area of a rectangle."""
+
+    def g(x, y):
+        return 1 if (0 <= x <= 2 and 3 <= y <= 4.5) else -1
+
+    x0 = 0
+    x1 = 3
+    y0 = 2
+    y1 = 5  # embedded rectangle
+    n = 1000
+    np.random.seed(8)  # must fix the seed!
+    I_expected = 3.121092  # computed with this seed
+    I_computed = MonteCarlo_double(lambda x, y: 1, g, x0, x1, y0, y1, n)
+    assert (abs(I_expected - I_computed) < 1E-14)
+
+
+def test_MonteCarlo_double_circle_r():
+    """Check the integral of r over a circle with radius 2."""
+    def g(x, y):
+        xc, yc = 0, 0  # center
+        R = 2  # radius
+        return R**2 - ((x-xc)**2 + (y-yc)**2)
+
+    # Exact: integral of r*r*dr over circle with radius R becomes
+    # 2*pi*1/3*R**3
+    import sympy
+    r = sympy.symbols('r')
+    I_exact = sympy.integrate(2*sympy.pi*r*r, (r, 0, 2))
