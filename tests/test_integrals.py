@@ -21,7 +21,6 @@ def test_trapezoidal_one_exact_result():
 
 def test_trapezoidal_linear():
     """Check that linear functions are integrated exactly"""
-
     f = lambda x: 6 * x - 4
     F = lambda x: 3 * x ** 2 - 4 * x
     a = 1.2
@@ -90,7 +89,6 @@ def test_midpoint_one_exact_result():
 
 def test_midpoint_linear():
     """Check that linear functions are integrated exactly"""
-
     f = lambda x: 6 * x - 4
     F = lambda x: 3 * x ** 2 - 4 * x
     a = 1.2
@@ -142,7 +140,6 @@ def test_midpoint_conv_rate():
 
 def test_trapezoidal_vec_linear():
     """Check that linear functions are integrated exactly"""
-
     f = lambda x: 6 * x - 4
     F = lambda x: 3 * x ** 2 - 4 * x
     a = 1.2
@@ -160,7 +157,6 @@ def test_trapezoidal_vec_linear():
 
 def test_midpoint_vec_linear():
     """Check that linear functions are integrated exactly"""
-
     f = lambda x: 6 * x - 4
     F = lambda x: 3 * x ** 2 - 4 * x
     a = 1.2
@@ -178,13 +174,12 @@ def test_midpoint_vec_linear():
 
 def test_midpoint_double():
     """Test that a linear function is integrated exactly."""
-
     def f(x, y):
         return 2 * x + y
 
-    a = 0;
-    b = 2;
-    c = 2;
+    a = 0
+    b = 2
+    c = 2
     d = 3
     import sympy
     x, y = sympy.symbols('x y')
@@ -200,7 +195,6 @@ def test_midpoint_double():
 
 def test_midpoint_triple():
     """Test that a linear function is integrated exactly."""
-
     def g(x, y, z):
         return 2 * x + y - 4 * z
 
@@ -223,7 +217,6 @@ def test_midpoint_triple():
 
 def test_MonteCarlo_double_rectangle_area():
     """Check the area of a rectangle."""
-
     def g(x, y):
         return 1 if (0 <= x <= 2 and 3 <= y <= 4.5) else -1
 
@@ -243,13 +236,13 @@ def test_MonteCarlo_double_circle_r():
     def g(x, y):
         xc, yc = 0, 0  # center
         R = 2  # radius
-        return R**2 - ((x-xc)**2 + (y-yc)**2)
+        return R ** 2 - ((x - xc) ** 2 + (y - yc) ** 2)
 
     # Exact: integral of r*r*dr over circle with radius R becomes
     # 2*pi*1/3*R**3
     import sympy
     r = sympy.symbols('r')
-    I_exact = sympy.integrate(2*sympy.pi*r*r, (r, 0, 2))
+    I_exact = sympy.integrate(2 * sympy.pi * r * r, (r, 0, 2))
     print('\nExact integral: ', I_exact.evalf())
     x0 = -2
     x1 = 2
@@ -259,6 +252,6 @@ def test_MonteCarlo_double_circle_r():
     np.random.seed(6)
     I_expected = 16.7970837117376384  # Computed with this seed
     I_computed = MonteCarlo_double(lambda x, y: np.sqrt(x ** 2 + y ** 2),
-                                                g, x0, x1, y0, y1, n)
+                                   g, x0, x1, y0, y1, n)
     print('MC approximation %d samples: %.16f' % (n ** 2, I_computed))
-    assert(abs(I_expected - I_computed) < 1E-15)
+    assert (abs(I_expected - I_computed) < 1E-15)
