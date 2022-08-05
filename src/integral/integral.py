@@ -226,6 +226,3 @@ def MonteCarlo_double(f, g, x0, x1, y0, y1, n):
     area = num_inside / float(n ** 2) * (x1 - x0) * (y1 - y0)
 
     return area * f_mean
-
-
-# TODO: Simpson's rule, Gauss quadrature
