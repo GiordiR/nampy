@@ -1,1 +1,0 @@
-from nampy.root import *

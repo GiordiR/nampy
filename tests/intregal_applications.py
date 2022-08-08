@@ -1,5 +1,5 @@
 # Test for trapezoidal
-from nampy import trapezoidal, midpoint
+from nampyPrj import trapezoidal, midpoint
 from math import exp
 
 

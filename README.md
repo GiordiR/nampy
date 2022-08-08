@@ -1,7 +1,7 @@
-# nampy
-Numerical Analysis Methods Python
+# nampyPrj
+Numerical Analysis Methods Python Project
 
 ### Installation
 ```
-pip install nampy
+pip install nampyPrj
 ```

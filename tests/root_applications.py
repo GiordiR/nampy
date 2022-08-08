@@ -1,4 +1,4 @@
-from nampy.root.root import *
+from nampyPrj.root.root import *
 
 
 def application_root_Newton():

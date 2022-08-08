@@ -1,5 +1,5 @@
-from nampy.integral.integral import *
-from nampy.integral.integral_vec import *
+from nampyPrj.integral.integral import *
+from nampyPrj.integral.integral_vec import *
 
 
 def test_trapezoidal_one_exact_result():

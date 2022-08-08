@@ -12,12 +12,12 @@ with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
 
 # This call to setup() does all the work
 setup(
-    name="nampy",
+    name="nampyPrj",
     version="0.1.0",
     description="Demo Numerical Analysis library",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    package_dir={'': 'nampy'},
+    package_dir={'': 'nampyPrj'},
     url="https://github.com/GiordiR/nampy",
     author="Riccardo Giordani",
     author_email="riccardo.giordani93@gmail.com",
@@ -28,7 +28,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent"
     ],
-    packages=find_packages('nampy'),
+    packages=find_packages('nampyPrj'),
     include_package_data=True,
     install_requires=['numpy', 'sympy', 'matplotlib']
 )
