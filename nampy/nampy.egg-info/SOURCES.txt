@@ -1,0 +1,14 @@
+README.md
+setup.py
+nampy/integral/__init__.py
+nampy/integral/integral.py
+nampy/integral/integral_vec.py
+nampy/nampy.egg-info/PKG-INFO
+nampy/nampy.egg-info/SOURCES.txt
+nampy/nampy.egg-info/dependency_links.txt
+nampy/nampy.egg-info/requires.txt
+nampy/nampy.egg-info/top_level.txt
+nampy/ode/__init__.py
+nampy/ode/ode.py
+nampy/root/__init__.py
+nampy/root/root.py
