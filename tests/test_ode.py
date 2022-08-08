@@ -1,4 +1,4 @@
-from src.ode.ode import *
+from nampy.ode.ode import *
 
 
 def test_ode_FE():

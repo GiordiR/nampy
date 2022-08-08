@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from src.ode.ode import *
+from nampy.ode.ode import *
 from numpy import exp, pi, cos
 
 

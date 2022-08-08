@@ -4,7 +4,7 @@ from tests.root_applications import *
 
 
 if __name__ == '__main__':
-    # application_trapezoidal()
+    application_trapezoidal()
     # application_midpoint()
     # application_integral()
     # application_ode_FE()
@@ -13,6 +13,6 @@ if __name__ == '__main__':
     # application_ode_EC_linear_damping_sine_excitation()
     # application_ode_EC_sliding_friction()
     # application_ode_RK2()
-    application_root_Newton()
+    # application_root_Newton()
     # application_root_secant()
     # application_root_bisection()
